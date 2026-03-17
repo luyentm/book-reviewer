@@ -4,6 +4,19 @@
 
 ---
 
+## TAG TAXONOMY
+
+Xem file `TAGS.md` để biết danh sách tag chuẩn và quy tắc gắn tag.
+**Tối đa 2 tag mỗi sách.** Ưu tiên tag đã có trong TAGS.md, chỉ tạo tag mới
+khi thực sự cần thiết và phải cập nhật TAGS.md.
+
+Tag chuẩn hiện có:
+`Tài chính & Đầu tư` · `Kinh doanh & Chiến lược` · `Lãnh đạo & Quản trị`
+`Tư duy & Ra quyết định` · `Tâm lý học & Hành vi` · `Năng suất & Thói quen`
+`Lịch sử & Xã hội` · `Khoa học & Công nghệ` · `Hư cấu & Tiểu thuyết` · `Truyền cảm hứng`
+
+---
+
 ## QUYTRÌNH KHI REVIEW SÁCH MỚI
 
 **Trigger:** User nói `Review sách: [Tên sách] - [Tác giả]`
@@ -89,6 +102,7 @@ Khi tạo `books/[slug].html`, dùng cấu trúc HTML sau (điền nội dung th
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>[Tên sách] — Book Review</title>
   <link rel="stylesheet" href="../assets/style.css">
+  <script src="../assets/book.js" defer></script>
 </head>
 <body class="book-page">
   <header class="site-header">
@@ -104,9 +118,9 @@ Khi tạo `books/[slug].html`, dùng cấu trúc HTML sau (điền nội dung th
         <h1 class="hero-title">[Tên sách]</h1>
         <p class="hero-author">— [Tên tác giả]</p>
         <div class="hero-tags">
-          <!-- Tag chủ đề: dùng <a> với link về index + hash filter -->
-          <a href="../index.html#tag=[TAG_ENCODED]" class="tag tag-link">[Thể loại]</a>
-          <!-- Tag meta: dùng <span> thường -->
+          <!-- Tag chủ đề: dùng <a class="tag tag-link"> — book.js tự set href -->
+          <a class="tag tag-link">[Tag từ TAGS.md]</a>
+          <!-- Tag meta: dùng <span> thường, không cần href -->
           <span class="tag">Phi hư cấu</span>
           <span class="tag">[Năm xuất bản nếu biết]</span>
         </div>
