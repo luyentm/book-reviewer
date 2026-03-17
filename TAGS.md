@@ -39,6 +39,7 @@ khi sách thực sự không thuộc bất kỳ nhóm nào bên dưới — và 
 | Nguyên Tắc | Lãnh đạo & Quản trị · Tư duy & Ra quyết định |
 | Sức Mạnh Của Sự Tập Trung | Năng suất & Thói quen |
 | Chiến Lược Đại Dương Xanh | Kinh doanh & Chiến lược |
+| Khởi Nghiệp Tinh Gọn | Kinh doanh & Chiến lược |
 
 ---
 
