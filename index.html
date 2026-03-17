@@ -19,65 +19,84 @@
   <main class="container">
     <p class="section-heading">Thư viện review</p>
 
+    <!-- Filter bar — được điền tự động bởi JS từ data-tags của các card -->
+    <div class="tag-filter-bar" id="tag-filters" aria-label="Lọc theo chủ đề"></div>
+
     <div class="book-grid">
 
       <!-- BOOK CARDS -->
 
-      <a href="books/muc-tieu.html" class="book-card">
+      <a href="books/muc-tieu.html" class="book-card" data-tags="Vận hành &amp; Quản trị,Business Novel">
         <div class="book-cover" style="background: #4B3832">
           <span class="book-spine"></span>
         </div>
         <div class="book-info">
           <h2 class="book-title">Mục Tiêu</h2>
           <p class="book-author">Eliyahu M. Goldratt</p>
+          <div class="card-tags">
+            <span class="card-tag" data-tag="Vận hành &amp; Quản trị">Vận hành &amp; Quản trị</span>
+            <span class="card-tag" data-tag="Business Novel">Business Novel</span>
+          </div>
           <p class="book-excerpt">Một tiểu thuyết kinh doanh hiếm có: Alex Rogo có 3 tháng để cứu nhà máy sắp đóng cửa. Hành trình đó tiết lộ một sự thật đảo lộn tư duy vận hành — tối ưu từng bộ phận không tạo ra hệ thống tối ưu.</p>
           <span class="read-more">Đọc review →</span>
         </div>
       </a>
 
-      <a href="books/tri-tue-tai-chinh.html" class="book-card">
+      <a href="books/tri-tue-tai-chinh.html" class="book-card" data-tags="Tài chính doanh nghiệp">
         <div class="book-cover" style="background: #8B0000">
           <span class="book-spine"></span>
         </div>
         <div class="book-info">
           <h2 class="book-title">Trí Tuệ Tài Chính</h2>
           <p class="book-author">Karen Berman &amp; Joe Knight</p>
+          <div class="card-tags">
+            <span class="card-tag" data-tag="Tài chính doanh nghiệp">Tài chính doanh nghiệp</span>
+          </div>
           <p class="book-excerpt">Những con số tài chính không phải sự thật tuyệt đối — chúng chứa đựng giả định của con người. Khi bạn hiểu điều đó, bạn có thể đọc báo cáo, đặt câu hỏi đúng, và ra quyết định tốt hơn dù không phải kế toán.</p>
           <span class="read-more">Đọc review →</span>
         </div>
       </a>
 
-      <a href="books/nha-quan-tri-hieu-qua.html" class="book-card">
+      <a href="books/nha-quan-tri-hieu-qua.html" class="book-card" data-tags="Quản trị &amp; Lãnh đạo">
         <div class="book-cover" style="background: #556B2F">
           <span class="book-spine"></span>
         </div>
         <div class="book-info">
           <h2 class="book-title">Nhà Quản Trị Hiệu Quả</h2>
           <p class="book-author">Peter F. Drucker</p>
+          <div class="card-tags">
+            <span class="card-tag" data-tag="Quản trị &amp; Lãnh đạo">Quản trị &amp; Lãnh đạo</span>
+          </div>
           <p class="book-excerpt">Drucker chỉ ra rằng hiệu quả không phải tài năng bẩm sinh — đó là một kỹ năng có thể học. Và nhiệm vụ cốt lõi của nhà quản trị không phải là làm việc nhiều, mà là làm đúng việc.</p>
           <span class="read-more">Đọc review →</span>
         </div>
       </a>
 
-      <a href="books/tu-tot-den-vi-dai.html" class="book-card">
+      <a href="books/tu-tot-den-vi-dai.html" class="book-card" data-tags="Kinh doanh &amp; Lãnh đạo">
         <div class="book-cover" style="background: #2F4F4F">
           <span class="book-spine"></span>
         </div>
         <div class="book-info">
           <h2 class="book-title">Từ Tốt Đến Vĩ Đại</h2>
           <p class="book-author">Jim Collins</p>
+          <div class="card-tags">
+            <span class="card-tag" data-tag="Kinh doanh &amp; Lãnh đạo">Kinh doanh &amp; Lãnh đạo</span>
+          </div>
           <p class="book-excerpt">Tại sao một số công ty bứt phá lên tầm vĩ đại trong khi những công ty khác mãi dậm chân ở mức tốt? Sau 5 năm nghiên cứu, Collins tìm ra câu trả lời — và nó không phải là điều bạn nghĩ.</p>
           <span class="read-more">Đọc review →</span>
         </div>
       </a>
 
-      <a href="books/cha-giau-cha-ngheo.html" class="book-card">
+      <a href="books/cha-giau-cha-ngheo.html" class="book-card" data-tags="Tài chính cá nhân">
         <div class="book-cover" style="background: #8B4513">
           <span class="book-spine"></span>
         </div>
         <div class="book-info">
           <h2 class="book-title">Cha Giàu Cha Nghèo</h2>
           <p class="book-author">Robert T. Kiyosaki</p>
+          <div class="card-tags">
+            <span class="card-tag" data-tag="Tài chính cá nhân">Tài chính cá nhân</span>
+          </div>
           <p class="book-excerpt">Tại sao người giàu ngày càng giàu hơn trong khi tầng lớp trung lưu mãi chật vật? Câu trả lời không nằm ở thu nhập — mà nằm ở cách bạn hiểu và dùng tiền.</p>
           <span class="read-more">Đọc review →</span>
         </div>
@@ -89,6 +108,82 @@
   <footer class="site-footer">
     <p>✦ Tủ sách cá nhân ✦</p>
   </footer>
+
+  <script>
+    const filterBar = document.getElementById('tag-filters');
+    const cards = Array.from(document.querySelectorAll('.book-card[data-tags]'));
+
+    // Thu thập tất cả tag duy nhất từ data-tags của các card
+    const allTags = [...new Set(
+      cards.flatMap(c => c.dataset.tags.split(',').map(t => t.trim()))
+    )];
+
+    // Xây filter bar: nút "Tất cả" + 1 nút mỗi tag
+    ['Tất cả', ...allTags].forEach(tag => {
+      const btn = document.createElement('button');
+      btn.className = 'tag-filter-btn';
+      btn.textContent = tag;
+      btn.dataset.tag = tag;
+      btn.setAttribute('aria-pressed', 'false');
+      filterBar.appendChild(btn);
+    });
+
+    // Hàm filter chính
+    function filterByTag(tag) {
+      cards.forEach(card => {
+        if (tag === 'Tất cả') {
+          card.hidden = false;
+        } else {
+          const tags = card.dataset.tags.split(',').map(t => t.trim());
+          card.hidden = !tags.includes(tag);
+        }
+      });
+
+      // Cập nhật trạng thái active
+      document.querySelectorAll('.tag-filter-btn').forEach(btn => {
+        const isActive = btn.dataset.tag === tag;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      // Cập nhật URL hash (không reload trang)
+      if (tag === 'Tất cả') {
+        history.replaceState(null, '', window.location.pathname);
+      } else {
+        history.replaceState(null, '', '#tag=' + encodeURIComponent(tag));
+      }
+    }
+
+    // Click vào filter button
+    filterBar.addEventListener('click', e => {
+      const btn = e.target.closest('.tag-filter-btn');
+      if (btn) filterByTag(btn.dataset.tag);
+    });
+
+    // Click vào card-tag (dừng event để không navigate vào sách)
+    document.querySelector('.book-grid').addEventListener('click', e => {
+      const cardTag = e.target.closest('.card-tag');
+      if (cardTag) {
+        e.preventDefault();
+        e.stopPropagation();
+        filterByTag(cardTag.dataset.tag);
+        filterBar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+
+    // Đọc hash khi tải trang (từ link trên trang sách)
+    function applyHashFilter() {
+      const hash = decodeURIComponent(window.location.hash);
+      if (hash.startsWith('#tag=')) {
+        filterByTag(hash.slice(5));
+      } else {
+        filterByTag('Tất cả');
+      }
+    }
+
+    applyHashFilter();
+    window.addEventListener('hashchange', applyHashFilter);
+  </script>
 
 </body>
 </html>

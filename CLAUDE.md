@@ -23,18 +23,24 @@ Nội dung review dựa theo **REVIEW PROMPT** bên dưới.
 Tìm comment `<!-- BOOK CARDS -->` trong `index.html` và thêm card mới **vào đầu** danh sách (sách mới nhất hiện trước):
 
 ```html
-<a href="books/[slug].html" class="book-card">
+<a href="books/[slug].html" class="book-card" data-tags="[TAG1],[TAG2]">
   <div class="book-cover" style="background: [CHỌN 1 MÀU VINTAGE TỪ PALETTE BÊN DƯỚI]">
     <span class="book-spine"></span>
   </div>
   <div class="book-info">
     <h2 class="book-title">[Tên sách]</h2>
     <p class="book-author">[Tên tác giả]</p>
+    <div class="card-tags">
+      <span class="card-tag" data-tag="[TAG1]">[TAG1]</span>
+      <!-- thêm span cho mỗi tag chủ đề, không thêm "Phi hư cấu" hay năm -->
+    </div>
     <p class="book-excerpt">[2-3 câu mô tả ngắn, hấp dẫn về cuốn sách]</p>
     <span class="read-more">Đọc review →</span>
   </div>
 </a>
 ```
+
+**Lưu ý về tags:** `data-tags` chỉ chứa tag chủ đề (ví dụ: `Tài chính cá nhân,Kinh doanh & Lãnh đạo`), không bao gồm "Phi hư cấu" hay năm xuất bản. Filter bar trên index.html được tự động tạo từ các tag này bởi JavaScript.
 
 **Palette màu vintage cho bìa sách** (chọn luân phiên, tránh trùng với card liền kề):
 - `#8B4513` (nâu saddle)
@@ -98,7 +104,10 @@ Khi tạo `books/[slug].html`, dùng cấu trúc HTML sau (điền nội dung th
         <h1 class="hero-title">[Tên sách]</h1>
         <p class="hero-author">— [Tên tác giả]</p>
         <div class="hero-tags">
-          <span class="tag">[Thể loại]</span>
+          <!-- Tag chủ đề: dùng <a> với link về index + hash filter -->
+          <a href="../index.html#tag=[TAG_ENCODED]" class="tag tag-link">[Thể loại]</a>
+          <!-- Tag meta: dùng <span> thường -->
+          <span class="tag">Phi hư cấu</span>
           <span class="tag">[Năm xuất bản nếu biết]</span>
         </div>
       </div>
