@@ -113,10 +113,13 @@
     const filterBar = document.getElementById('tag-filters');
     const cards = Array.from(document.querySelectorAll('.book-card[data-tags]'));
 
-    // Thu thập tag duy nhất, giữ thứ tự xuất hiện
-    const allTags = [...new Set(
-      cards.flatMap(c => c.dataset.tags.split(',').map(t => t.trim()))
-    )];
+    // Pre-parse tags một lần duy nhất, tránh parse lại trong mỗi lần filter
+    const cardTagsMap = new Map(
+      cards.map(c => [c, c.dataset.tags.split(',').map(t => t.trim())])
+    );
+
+    // Thu thập tag duy nhất từ map đã parse, giữ thứ tự xuất hiện
+    const allTags = [...new Set(cards.flatMap(c => cardTagsMap.get(c)))];
 
     // Xây filter bar
     ['Tất cả', ...allTags].forEach(tag => {
@@ -128,17 +131,19 @@
       filterBar.appendChild(btn);
     });
 
+    // Cache button list sau khi đã build xong
+    const filterBtns = filterBar.querySelectorAll('.tag-filter-btn');
+    let activeTag = null;
+
     function filterByTag(tag) {
+      if (tag === activeTag) return; // early-exit nếu tag không đổi
+      activeTag = tag;
+
       cards.forEach(card => {
-        if (tag === 'Tất cả') {
-          card.hidden = false;
-        } else {
-          const tags = card.dataset.tags.split(',').map(t => t.trim());
-          card.hidden = !tags.includes(tag);
-        }
+        card.hidden = tag !== 'Tất cả' && !cardTagsMap.get(card).includes(tag);
       });
 
-      document.querySelectorAll('.tag-filter-btn').forEach(btn => {
+      filterBtns.forEach(btn => {
         const isActive = btn.dataset.tag === tag;
         btn.classList.toggle('active', isActive);
         btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
@@ -156,11 +161,10 @@
       if (btn) filterByTag(btn.dataset.tag);
     });
 
-    // Click card-tag → filter (không navigate vào sách)
+    // Click card-tag → filter (stopPropagation ngăn navigate vào sách)
     document.querySelector('.book-grid').addEventListener('click', e => {
       const cardTag = e.target.closest('.card-tag');
       if (cardTag) {
-        e.preventDefault();
         e.stopPropagation();
         filterByTag(cardTag.dataset.tag);
         filterBar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -169,11 +173,7 @@
 
     function applyHashFilter() {
       const hash = decodeURIComponent(window.location.hash);
-      if (hash.startsWith('#tag=')) {
-        filterByTag(hash.slice(5));
-      } else {
-        filterByTag('Tất cả');
-      }
+      filterByTag(hash.startsWith('#tag=') ? hash.slice(5) : 'Tất cả');
     }
 
     applyHashFilter();

@@ -4,5 +4,5 @@
 
 document.querySelectorAll('a.tag-link').forEach(function (a) {
   var tag = a.textContent.trim();
-  a.href = '../index.html#tag=' + encodeURIComponent(tag);
+  if (tag) a.href = '../index.html#tag=' + encodeURIComponent(tag);
 });
