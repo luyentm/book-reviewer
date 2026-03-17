@@ -33,6 +33,12 @@ khi sách thực sự không thuộc bất kỳ nhóm nào bên dưới — và 
 | Nhà Quản Trị Hiệu Quả | Lãnh đạo & Quản trị |
 | Trí Tuệ Tài Chính | Tài chính & Đầu tư |
 | Mục Tiêu | Lãnh đạo & Quản trị · Hư cấu & Tiểu thuyết |
+| Lãnh Đạo Phục Vụ | Lãnh đạo & Quản trị |
+| Đừng Bao Giờ Đi Ăn Một Mình | Năng suất & Thói quen |
+| Tư Duy Nhanh Và Chậm | Tư duy & Ra quyết định · Tâm lý học & Hành vi |
+| Nguyên Tắc | Lãnh đạo & Quản trị · Tư duy & Ra quyết định |
+| Sức Mạnh Của Sự Tập Trung | Năng suất & Thói quen |
+| Chiến Lược Đại Dương Xanh | Kinh doanh & Chiến lược |
 
 ---
 
