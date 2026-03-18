@@ -1,27 +1,4 @@
 (function () {
-  // ── Audio: tạo một lần, tồn tại xuyên suốt các navigation ──────────────
-  function initAudio() {
-    if (document.getElementById('bg-audio')) return;
-    var isBook = location.pathname.includes('/books/');
-    var audio = document.createElement('audio');
-    audio.id = 'bg-audio';
-    audio.src = (isBook ? '../' : '') + 'assets/music/bg.mp3';
-    audio.loop = true;
-    audio.volume = 0.2;
-    audio.preload = 'none';
-    document.body.appendChild(audio);
-
-    var started = false;
-    function tryPlay() {
-      if (started) return;
-      audio.play().then(function () { started = true; }).catch(function () {});
-    }
-    tryPlay();
-    ['click', 'keydown', 'scroll', 'touchstart'].forEach(function (evt) {
-      document.addEventListener(evt, tryPlay, { passive: true });
-    });
-  }
-
   // ── TTS ──────────────────────────────────────────────────────────────────
   var viVoice = null;
 
@@ -64,11 +41,6 @@
     var paused = false;
     var text = article.innerText;
 
-    var bgAudio = document.getElementById('bg-audio');
-
-    function bgPause() { if (bgAudio && !bgAudio.paused) bgAudio.pause(); }
-    function bgResume() { if (bgAudio && bgAudio.paused) bgAudio.play().catch(function(){}); }
-
     playBtn.addEventListener('click', function () {
       if (!speaking) {
         loadViVoice(function (voice) {
@@ -82,18 +54,15 @@
           speechSynthesis.speak(utt);
         });
         speaking = true; paused = false;
-        bgPause();
         playBtn.textContent = '⏸ Tạm dừng';
         stopBtn.hidden = false;
       } else if (!paused) {
         speechSynthesis.pause();
         paused = true;
-        bgResume();
         playBtn.textContent = '▶ Tiếp tục';
       } else {
         speechSynthesis.resume();
         paused = false;
-        bgPause();
         playBtn.textContent = '⏸ Tạm dừng';
       }
     });
@@ -105,7 +74,6 @@
 
     function resetState() {
       speaking = false; paused = false;
-      bgResume();
       playBtn.textContent = '▶ Nghe bài';
       stopBtn.hidden = true;
     }
