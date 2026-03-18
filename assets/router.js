@@ -10,12 +10,20 @@
       var v = voices.find(function(v){ return v.lang === 'vi-VN' && /google/i.test(v.name); })
            || voices.find(function(v){ return v.lang === 'vi-VN'; })
            || voices.find(function(v){ return v.lang.startsWith('vi'); });
-      if (v) { viVoice = v; cb(v); }
-      else cb(null);
+      if (v) viVoice = v;
+      cb(v || null);
     }
     var voices = speechSynthesis.getVoices();
-    if (voices.length) { find(); }
-    else { speechSynthesis.addEventListener('voiceschanged', find, { once: true }); }
+    if (voices.length) {
+      find();
+    } else {
+      // Fallback timeout: nếu voiceschanged không bao giờ fire thì vẫn speak
+      var t = setTimeout(function() { cb(null); }, 1500);
+      speechSynthesis.addEventListener('voiceschanged', function() {
+        clearTimeout(t);
+        find();
+      }, { once: true });
+    }
   }
 
   function initTTS() {
@@ -35,23 +43,37 @@
     var stopBtn = document.getElementById('tts-stop');
     var speaking = false;
     var paused = false;
+    var keepAlive = null;
     var text = article.innerText;
+
+    function startKeepAlive() {
+      // Fix Chrome bug: speechSynthesis silently stops after ~15s on long text
+      keepAlive = setInterval(function() {
+        if (!speechSynthesis.speaking) { stopKeepAlive(); return; }
+        if (!paused) { speechSynthesis.pause(); speechSynthesis.resume(); }
+      }, 10000);
+    }
+
+    function stopKeepAlive() {
+      if (keepAlive) { clearInterval(keepAlive); keepAlive = null; }
+    }
 
     playBtn.addEventListener('click', function () {
       if (!speaking) {
+        speaking = true; paused = false;
+        playBtn.textContent = '⏸ Tạm dừng';
+        stopBtn.hidden = false;
         loadViVoice(function (voice) {
           var utt = new SpeechSynthesisUtterance(text);
           utt.lang = 'vi-VN';
           utt.rate = 0.95;
           if (voice) utt.voice = voice;
-          utt.onend = resetState;
-          utt.onerror = resetState;
+          utt.onstart = startKeepAlive;
+          utt.onend = function() { stopKeepAlive(); resetState(); };
+          utt.onerror = function() { stopKeepAlive(); resetState(); };
           speechSynthesis.cancel();
           speechSynthesis.speak(utt);
         });
-        speaking = true; paused = false;
-        playBtn.textContent = '⏸ Tạm dừng';
-        stopBtn.hidden = false;
       } else if (!paused) {
         speechSynthesis.pause();
         paused = true;
@@ -64,8 +86,14 @@
     });
 
     stopBtn.addEventListener('click', function () {
+      stopKeepAlive();
       speechSynthesis.cancel();
       resetState();
+    });
+
+    window.addEventListener('beforeunload', function() {
+      stopKeepAlive();
+      speechSynthesis.cancel();
     });
 
     function resetState() {
