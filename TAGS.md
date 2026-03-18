@@ -40,6 +40,7 @@ khi sách thực sự không thuộc bất kỳ nhóm nào bên dưới — và 
 | Sức Mạnh Của Sự Tập Trung | Năng suất & Thói quen |
 | Chiến Lược Đại Dương Xanh | Kinh doanh & Chiến lược |
 | Khởi Nghiệp Tinh Gọn | Kinh doanh & Chiến lược |
+| Đắc Nhân Tâm | Tâm lý học & Hành vi |
 
 ---
 
