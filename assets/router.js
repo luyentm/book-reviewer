@@ -22,10 +22,70 @@
     });
   }
 
+  // ── TTS ──────────────────────────────────────────────────────────────────
+  function stopTTS() {
+    if (window.speechSynthesis) speechSynthesis.cancel();
+  }
+
+  function initTTS() {
+    var article = document.querySelector('.review-body');
+    if (!article || !window.speechSynthesis) return;
+
+    var bar = document.createElement('div');
+    bar.className = 'tts-bar';
+    bar.innerHTML =
+      '<button class="tts-btn" id="tts-play">▶ Nghe bài</button>' +
+      '<button class="tts-btn tts-stop" id="tts-stop" hidden>✕ Dừng</button>';
+
+    var heroMeta = document.querySelector('.hero-meta');
+    if (heroMeta) heroMeta.appendChild(bar);
+
+    var playBtn = document.getElementById('tts-play');
+    var stopBtn = document.getElementById('tts-stop');
+    var speaking = false;
+    var paused = false;
+    var text = article.innerText;
+
+    playBtn.addEventListener('click', function () {
+      if (!speaking) {
+        var utt = new SpeechSynthesisUtterance(text);
+        utt.lang = 'vi-VN';
+        utt.rate = 0.95;
+        utt.onend = resetState;
+        utt.onerror = resetState;
+        speechSynthesis.cancel();
+        speechSynthesis.speak(utt);
+        speaking = true; paused = false;
+        playBtn.textContent = '⏸ Tạm dừng';
+        stopBtn.hidden = false;
+      } else if (!paused) {
+        speechSynthesis.pause();
+        paused = true;
+        playBtn.textContent = '▶ Tiếp tục';
+      } else {
+        speechSynthesis.resume();
+        paused = false;
+        playBtn.textContent = '⏸ Tạm dừng';
+      }
+    });
+
+    stopBtn.addEventListener('click', function () {
+      speechSynthesis.cancel();
+      resetState();
+    });
+
+    function resetState() {
+      speaking = false; paused = false;
+      playBtn.textContent = '▶ Nghe bài';
+      stopBtn.hidden = true;
+    }
+  }
+
   // ── Page init: chạy lại sau mỗi lần swap ────────────────────────────────
   function initPage() {
     initTagLinks();
     if (document.querySelector('.book-grid')) initFilterBar();
+    initTTS();
   }
 
   function initTagLinks() {
@@ -114,6 +174,7 @@
   }
 
   function navigate(url, push) {
+    stopTTS();
     fetch(url).then(function (r) { return r.text(); }).then(function (html) {
       var doc = new DOMParser().parseFromString(html, 'text/html');
       var newMain = doc.querySelector('main');

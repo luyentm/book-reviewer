@@ -423,6 +423,36 @@ body::before {
   color: var(--text);
 }
 
+/* ---------- TTS Bar ---------- */
+.tts-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tts-btn {
+  padding: 0.4rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--accent-dk);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.tts-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.tts-stop {
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   position: relative;
