@@ -41,6 +41,7 @@ khi sách thực sự không thuộc bất kỳ nhóm nào bên dưới — và 
 | Chiến Lược Đại Dương Xanh | Kinh doanh & Chiến lược |
 | Khởi Nghiệp Tinh Gọn | Kinh doanh & Chiến lược |
 | Đắc Nhân Tâm | Tâm lý học & Hành vi |
+| Nguyên Lý 80/20 | Tư duy & Ra quyết định · Năng suất & Thói quen |
 
 ---
 
