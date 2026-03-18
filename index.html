@@ -332,5 +332,26 @@
     window.addEventListener('hashchange', applyHashFilter);
   </script>
 
+  <!-- Background music — plays on first user interaction (browser autoplay policy) -->
+  <audio id="bg-audio" src="assets/music/bg.mp3" loop preload="none"></audio>
+  <script>
+    (function () {
+      var audio = document.getElementById('bg-audio');
+      audio.volume = 0.2;
+      var started = false;
+
+      function tryPlay() {
+        if (started) return;
+        audio.play().then(function () {
+          started = true;
+        }).catch(function () {});
+      }
+
+      ['click', 'keydown', 'scroll', 'touchstart'].forEach(function (evt) {
+        document.addEventListener(evt, tryPlay, { once: false, passive: true });
+      });
+    })();
+  </script>
+
 </body>
 </html>
