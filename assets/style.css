@@ -100,6 +100,13 @@ body::before {
   vertical-align: middle;
 }
 
+.site-hits {
+  margin-top: 0.6rem;
+}
+.site-hits img {
+  height: 20px;
+}
+
 .site-tagline {
   margin-top: 0.25rem;
   font-style: italic;
@@ -376,6 +383,13 @@ body::before {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
+}
+
+.hits-badge {
+  margin-top: 0.75rem;
+}
+.hits-badge img {
+  height: 20px;
 }
 
 .tag {
