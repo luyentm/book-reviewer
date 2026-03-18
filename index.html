@@ -16,244 +16,126 @@
     <div class="divider"></div>
   </header>
 
-  <main class="container">
+  <main class="container container--table">
     <p class="section-heading">Thư viện review</p>
 
-    <!-- Filter bar — được điền tự động bởi JS từ data-tags của các card -->
     <div class="tag-filter-bar" id="tag-filters" aria-label="Lọc theo chủ đề"></div>
 
-    <div class="book-grid">
+    <div class="table-wrapper">
+      <table class="book-table">
+        <thead>
+          <tr>
+            <th class="col-cover">Bìa</th>
+            <th class="col-name">
+              Tên sách
+              <input type="search" id="search-name" placeholder="Tìm kiếm..." autocomplete="off" spellcheck="false">
+            </th>
+            <th class="col-author">Tác giả</th>
+            <th class="col-excerpt">Trích đoạn</th>
+          </tr>
+        </thead>
+        <tbody>
 
-      <!-- BOOK CARDS -->
+          <tr class="book-row" data-tags="Tư duy &amp; Ra quyết định,Năng suất &amp; Thói quen" data-name="Nguyên Lý 80/20" data-href="books/nguyen-ly-80-20.html">
+            <td class="col-cover"><div class="row-cover" style="background:#4B3832"><img src="assets/images/nguyen-ly-80-20.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/nguyen-ly-80-20.html" class="row-title">Nguyên Lý 80/20</a></td>
+            <td class="col-author">Richard Koch</td>
+            <td class="col-excerpt">80% kết quả đến từ 20% nguyên nhân — người hiểu nguyên lý này không cố làm nhiều hơn mà tập trung vào đúng 20% để đạt nhiều hơn với ít nỗ lực hơn.</td>
+          </tr>
 
-      <a href="books/nguyen-ly-80-20.html" class="book-card" data-tags="Tư duy &amp; Ra quyết định,Năng suất &amp; Thói quen">
-        <div class="book-cover" style="background: #4B3832">
-          <img src="assets/images/nguyen-ly-80-20.jpg" alt="Nguyên Lý 80/20" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Nguyên Lý 80/20</h2>
-          <p class="book-author">Richard Koch</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Tư duy &amp; Ra quyết định">Tư duy &amp; Ra quyết định</span>
-            <span class="card-tag" data-tag="Năng suất &amp; Thói quen">Năng suất &amp; Thói quen</span>
-          </div>
-          <p class="book-excerpt">80% kết quả đến từ 20% nguyên nhân — và người hiểu nguyên lý này không cố làm nhiều hơn mà học cách tập trung vào đúng 20% để đạt được nhiều hơn với ít nỗ lực hơn.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Tâm lý học &amp; Hành vi" data-name="Đắc Nhân Tâm" data-href="books/dac-nhan-tam.html">
+            <td class="col-cover"><div class="row-cover" style="background:#8B0000"><img src="assets/images/dac-nhan-tam.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/dac-nhan-tam.html" class="row-title">Đắc Nhân Tâm</a></td>
+            <td class="col-author">Dale Carnegie</td>
+            <td class="col-excerpt">Bí quyết chinh phục bất kỳ ai không nằm ở tài năng hay địa vị — mà nằm ở khả năng khiến người khác cảm thấy quan trọng, được lắng nghe và tôn trọng thực sự.</td>
+          </tr>
 
-      <a href="books/dac-nhan-tam.html" class="book-card" data-tags="Tâm lý học &amp; Hành vi">
-        <div class="book-cover" style="background: #8B0000">
-          <img src="assets/images/dac-nhan-tam.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Đắc Nhân Tâm</h2>
-          <p class="book-author">Dale Carnegie</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Tâm lý học &amp; Hành vi">Tâm lý học &amp; Hành vi</span>
-          </div>
-          <p class="book-excerpt">Bí quyết chinh phục bất kỳ ai không nằm ở tài năng hay địa vị — mà nằm ở khả năng khiến người khác cảm thấy quan trọng, được lắng nghe và được tôn trọng thực sự. Cuốn sách kinh điển nhất mọi thời đại về nghệ thuật giao tiếp và xây dựng mối quan hệ.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Kinh doanh &amp; Chiến lược" data-name="Khởi Nghiệp Tinh Gọn" data-href="books/khoi-nghiep-tinh-gon.html">
+            <td class="col-cover"><div class="row-cover" style="background:#556B2F"><img src="assets/images/khoi-nghiep-tinh-gon.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/khoi-nghiep-tinh-gon.html" class="row-title">Khởi Nghiệp Tinh Gọn</a></td>
+            <td class="col-author">Eric Ries</td>
+            <td class="col-excerpt">Phần lớn startup thất bại vì xây sản phẩm mà không ai cần. Build–Measure–Learn: xây dựng nhanh, đo lường thực, học từ dữ liệu để rút ngắn thời gian từ giả định đến sự thật.</td>
+          </tr>
 
-      <a href="books/khoi-nghiep-tinh-gon.html" class="book-card" data-tags="Kinh doanh &amp; Chiến lược">
-        <div class="book-cover" style="background: #556B2F">
-          <img src="assets/images/khoi-nghiep-tinh-gon.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Khởi Nghiệp Tinh Gọn</h2>
-          <p class="book-author">Eric Ries</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Kinh doanh &amp; Chiến lược">Kinh doanh &amp; Chiến lược</span>
-          </div>
-          <p class="book-excerpt">Phần lớn startup thất bại vì dành quá nhiều thời gian xây sản phẩm mà không ai cần. Lean Startup đề xuất vòng lặp Build–Measure–Learn: xây dựng nhanh, đo lường thực, học từ dữ liệu — để rút ngắn thời gian từ giả định đến sự thật được kiểm chứng.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Kinh doanh &amp; Chiến lược" data-name="Chiến Lược Đại Dương Xanh" data-href="books/chien-luoc-dai-duong-xanh.html">
+            <td class="col-cover"><div class="row-cover" style="background:#1A4A6B"><img src="assets/images/chien-luoc-dai-duong-xanh.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/chien-luoc-dai-duong-xanh.html" class="row-title">Chiến Lược Đại Dương Xanh</a></td>
+            <td class="col-author">W. Chan Kim &amp; R. Mauborgne</td>
+            <td class="col-excerpt">Thay vì cạnh tranh khốc liệt trong thị trường đã có, hãy tạo không gian thị trường mới không có đối thủ. Value Innovation cho phép tạo giá trị vượt trội và giảm chi phí đồng thời.</td>
+          </tr>
 
-      <a href="books/chien-luoc-dai-duong-xanh.html" class="book-card" data-tags="Kinh doanh &amp; Chiến lược">
-        <div class="book-cover" style="background: #1A4A6B">
-          <img src="assets/images/chien-luoc-dai-duong-xanh.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Chiến Lược Đại Dương Xanh</h2>
-          <p class="book-author">W. Chan Kim &amp; Renée Mauborgne</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Kinh doanh &amp; Chiến lược">Kinh doanh &amp; Chiến lược</span>
-          </div>
-          <p class="book-excerpt">Thay vì cạnh tranh khốc liệt trong thị trường đã có, hãy tạo ra không gian thị trường mới không có đối thủ. Value Innovation cho phép đồng thời tạo ra giá trị vượt trội và giảm chi phí — phá vỡ đánh đổi mà chiến lược truyền thống coi là tất yếu.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Năng suất &amp; Thói quen" data-name="Sức Mạnh Của Sự Tập Trung" data-href="books/suc-manh-cua-su-tap-trung.html">
+            <td class="col-cover"><div class="row-cover" style="background:#2F4F4F"><img src="assets/images/suc-manh-cua-su-tap-trung.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/suc-manh-cua-su-tap-trung.html" class="row-title">Sức Mạnh Của Sự Tập Trung</a></td>
+            <td class="col-author">Canfield, Hansen &amp; Hewitt</td>
+            <td class="col-excerpt">Thành công không đến từ làm nhiều thứ — mà đến từ tập trung nhất quán vào việc quan trọng nhất và xây dựng thói quen đúng mỗi ngày.</td>
+          </tr>
 
-      <a href="books/suc-manh-cua-su-tap-trung.html" class="book-card" data-tags="Năng suất &amp; Thói quen">
-        <div class="book-cover" style="background: #2F4F4F">
-          <img src="assets/images/suc-manh-cua-su-tap-trung.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Sức Mạnh Của Sự Tập Trung</h2>
-          <p class="book-author">Jack Canfield, Mark Victor Hansen &amp; Les Hewitt</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Năng suất &amp; Thói quen">Năng suất &amp; Thói quen</span>
-          </div>
-          <p class="book-excerpt">Thành công không đến từ việc làm nhiều thứ — mà đến từ việc tập trung nhất quán vào những việc quan trọng nhất và xây dựng thói quen đúng. Sự tập trung không phải tài năng bẩm sinh — đó là kỹ năng có thể rèn luyện mỗi ngày.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Lãnh đạo &amp; Quản trị,Tư duy &amp; Ra quyết định" data-name="Nguyên Tắc" data-href="books/nguyen-tac.html">
+            <td class="col-cover"><div class="row-cover" style="background:#8B4513"><img src="assets/images/nguyen-tac.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/nguyen-tac.html" class="row-title">Nguyên Tắc</a></td>
+            <td class="col-author">Ray Dalio</td>
+            <td class="col-excerpt">40 năm nguyên tắc từ người sáng lập quỹ đầu tư lớn nhất thế giới. Thành công bền vững đến từ hệ thống nguyên tắc rõ ràng, kiểm chứng qua thực tế, áp dụng nhất quán.</td>
+          </tr>
 
-      <a href="books/nguyen-tac.html" class="book-card" data-tags="Lãnh đạo &amp; Quản trị,Tư duy &amp; Ra quyết định">
-        <div class="book-cover" style="background: #8B4513">
-          <img src="assets/images/nguyen-tac.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Nguyên Tắc</h2>
-          <p class="book-author">Ray Dalio</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Lãnh đạo &amp; Quản trị">Lãnh đạo &amp; Quản trị</span>
-            <span class="card-tag" data-tag="Tư duy &amp; Ra quyết định">Tư duy &amp; Ra quyết định</span>
-          </div>
-          <p class="book-excerpt">40 năm nguyên tắc được chưng cất từ người sáng lập quỹ đầu tư lớn nhất thế giới. Thành công bền vững không đến từ tài năng — mà đến từ hệ thống nguyên tắc rõ ràng, kiểm chứng qua thực tế, và áp dụng nhất quán. Đau đớn cộng với phản tư chính là tiến bộ.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Tư duy &amp; Ra quyết định,Tâm lý học &amp; Hành vi" data-name="Tư Duy Nhanh Và Chậm" data-href="books/tu-duy-nhanh-va-cham.html">
+            <td class="col-cover"><div class="row-cover" style="background:#3B5323"><img src="assets/images/tu-duy-nhanh-va-cham.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/tu-duy-nhanh-va-cham.html" class="row-title">Tư Duy Nhanh Và Chậm</a></td>
+            <td class="col-author">Daniel Kahneman</td>
+            <td class="col-excerpt">Não người vận hành theo Hệ thống 1 (nhanh, cảm tính) và Hệ thống 2 (chậm, lý tính). Phần lớn quyết định bị chi phối bởi Hệ thống 1 mà không hay biết.</td>
+          </tr>
 
-      <a href="books/tu-duy-nhanh-va-cham.html" class="book-card" data-tags="Tư duy &amp; Ra quyết định,Tâm lý học &amp; Hành vi">
-        <div class="book-cover" style="background: #3B5323">
-          <img src="assets/images/tu-duy-nhanh-va-cham.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Tư Duy Nhanh Và Chậm</h2>
-          <p class="book-author">Daniel Kahneman</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Tư duy &amp; Ra quyết định">Tư duy &amp; Ra quyết định</span>
-            <span class="card-tag" data-tag="Tâm lý học &amp; Hành vi">Tâm lý học &amp; Hành vi</span>
-          </div>
-          <p class="book-excerpt">Não người vận hành theo hai hệ thống: Hệ thống 1 — nhanh, tự động, cảm tính — và Hệ thống 2 — chậm, có chủ đích, lý tính. Phần lớn quyết định bị chi phối bởi Hệ thống 1 mà không hay biết. Nhận ra điều đó là bước đầu để tư duy sáng suốt hơn.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Năng suất &amp; Thói quen" data-name="Đừng Bao Giờ Đi Ăn Một Mình" data-href="books/dung-bao-gio-di-an-mot-minh.html">
+            <td class="col-cover"><div class="row-cover" style="background:#5C4033"><img src="assets/images/dung-bao-gio-di-an-mot-minh.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/dung-bao-gio-di-an-mot-minh.html" class="row-title">Đừng Bao Giờ Đi Ăn Một Mình</a></td>
+            <td class="col-author">Keith Ferrazzi</td>
+            <td class="col-excerpt">Networking không phải trao đổi danh thiếp — mà là xây kết nối chân thật bằng cách cho đi thực sự, liên tục, không điều kiện, trước khi bạn cần bất cứ thứ gì.</td>
+          </tr>
 
-      <a href="books/dung-bao-gio-di-an-mot-minh.html" class="book-card" data-tags="Năng suất &amp; Thói quen">
-        <div class="book-cover" style="background: #5C4033">
-          <img src="assets/images/dung-bao-gio-di-an-mot-minh.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Đừng Bao Giờ Đi Ăn Một Mình</h2>
-          <p class="book-author">Keith Ferrazzi</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Năng suất &amp; Thói quen">Năng suất &amp; Thói quen</span>
-          </div>
-          <p class="book-excerpt">Networking không phải là trao đổi danh thiếp — mà là xây dựng kết nối chân thật bằng cách cho đi thực sự, liên tục, không có điều kiện, trước khi bạn cần bất cứ thứ gì. Paradox là: người cho đi nhiều nhất thường nhận lại nhiều nhất về lâu dài.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Lãnh đạo &amp; Quản trị" data-name="Lãnh Đạo Phục Vụ" data-href="books/lanh-dao-phuc-vu.html">
+            <td class="col-cover"><div class="row-cover" style="background:#1C3A4A"><img src="assets/images/lanh-dao-phuc-vu.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/lanh-dao-phuc-vu.html" class="row-title">Lãnh Đạo Phục Vụ</a></td>
+            <td class="col-author">Ken Blanchard</td>
+            <td class="col-excerpt">Lãnh đạo thực sự không phải về quyền lực — mà là về phục vụ: đặt nhu cầu và sự phát triển của người khác lên trên lợi ích cá nhân.</td>
+          </tr>
 
-      <a href="books/lanh-dao-phuc-vu.html" class="book-card" data-tags="Lãnh đạo &amp; Quản trị">
-        <div class="book-cover" style="background: #1C3A4A">
-          <img src="assets/images/lanh-dao-phuc-vu.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Lãnh Đạo Phục Vụ</h2>
-          <p class="book-author">Ken Blanchard</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Lãnh đạo &amp; Quản trị">Lãnh đạo &amp; Quản trị</span>
-          </div>
-          <p class="book-excerpt">Lãnh đạo thực sự không phải về quyền lực và vị trí — mà là về phục vụ: đặt nhu cầu và sự phát triển của người khác lên trên lợi ích cá nhân. Khi nhân viên được phục vụ đúng nghĩa, họ có động lực phục vụ khách hàng tốt hơn — và kết quả tự nhiên theo sau.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Lãnh đạo &amp; Quản trị,Hư cấu &amp; Tiểu thuyết" data-name="Mục Tiêu" data-href="books/muc-tieu.html">
+            <td class="col-cover"><div class="row-cover" style="background:#4B3832"><img src="assets/images/muc-tieu.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/muc-tieu.html" class="row-title">Mục Tiêu</a></td>
+            <td class="col-author">Eliyahu M. Goldratt</td>
+            <td class="col-excerpt">Tiểu thuyết kinh doanh hiếm có: Alex Rogo có 3 tháng để cứu nhà máy. Sự thật tiết lộ: tối ưu từng bộ phận không tạo ra hệ thống tối ưu.</td>
+          </tr>
 
-      <a href="books/muc-tieu.html" class="book-card" data-tags="Lãnh đạo &amp; Quản trị,Hư cấu &amp; Tiểu thuyết">
-        <div class="book-cover" style="background: #4B3832">
-          <img src="assets/images/muc-tieu.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Mục Tiêu</h2>
-          <p class="book-author">Eliyahu M. Goldratt</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Lãnh đạo &amp; Quản trị">Lãnh đạo &amp; Quản trị</span>
-            <span class="card-tag" data-tag="Hư cấu &amp; Tiểu thuyết">Hư cấu &amp; Tiểu thuyết</span>
-          </div>
-          <p class="book-excerpt">Một tiểu thuyết kinh doanh hiếm có: Alex Rogo có 3 tháng để cứu nhà máy sắp đóng cửa. Hành trình đó tiết lộ một sự thật đảo lộn tư duy vận hành — tối ưu từng bộ phận không tạo ra hệ thống tối ưu.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Tài chính &amp; Đầu tư" data-name="Trí Tuệ Tài Chính" data-href="books/tri-tue-tai-chinh.html">
+            <td class="col-cover"><div class="row-cover" style="background:#8B0000"><img src="assets/images/tri-tue-tai-chinh.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/tri-tue-tai-chinh.html" class="row-title">Trí Tuệ Tài Chính</a></td>
+            <td class="col-author">Karen Berman &amp; Joe Knight</td>
+            <td class="col-excerpt">Con số tài chính không phải sự thật tuyệt đối — chúng chứa đựng giả định của con người. Hiểu điều đó giúp ra quyết định tốt hơn dù không phải kế toán.</td>
+          </tr>
 
-      <a href="books/tri-tue-tai-chinh.html" class="book-card" data-tags="Tài chính &amp; Đầu tư">
-        <div class="book-cover" style="background: #8B0000">
-          <img src="assets/images/tri-tue-tai-chinh.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Trí Tuệ Tài Chính</h2>
-          <p class="book-author">Karen Berman &amp; Joe Knight</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Tài chính &amp; Đầu tư">Tài chính &amp; Đầu tư</span>
-          </div>
-          <p class="book-excerpt">Những con số tài chính không phải sự thật tuyệt đối — chúng chứa đựng giả định của con người. Khi bạn hiểu điều đó, bạn có thể đọc báo cáo, đặt câu hỏi đúng, và ra quyết định tốt hơn dù không phải kế toán.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Lãnh đạo &amp; Quản trị" data-name="Nhà Quản Trị Hiệu Quả" data-href="books/nha-quan-tri-hieu-qua.html">
+            <td class="col-cover"><div class="row-cover" style="background:#556B2F"><img src="assets/images/nha-quan-tri-hieu-qua.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/nha-quan-tri-hieu-qua.html" class="row-title">Nhà Quản Trị Hiệu Quả</a></td>
+            <td class="col-author">Peter F. Drucker</td>
+            <td class="col-excerpt">Hiệu quả không phải tài năng bẩm sinh — đó là kỹ năng có thể học. Nhiệm vụ cốt lõi của nhà quản trị không phải làm nhiều, mà là làm đúng việc.</td>
+          </tr>
 
-      <a href="books/nha-quan-tri-hieu-qua.html" class="book-card" data-tags="Lãnh đạo &amp; Quản trị">
-        <div class="book-cover" style="background: #556B2F">
-          <img src="assets/images/nha-quan-tri-hieu-qua.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Nhà Quản Trị Hiệu Quả</h2>
-          <p class="book-author">Peter F. Drucker</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Lãnh đạo &amp; Quản trị">Lãnh đạo &amp; Quản trị</span>
-          </div>
-          <p class="book-excerpt">Drucker chỉ ra rằng hiệu quả không phải tài năng bẩm sinh — đó là một kỹ năng có thể học. Và nhiệm vụ cốt lõi của nhà quản trị không phải là làm việc nhiều, mà là làm đúng việc.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Kinh doanh &amp; Chiến lược" data-name="Từ Tốt Đến Vĩ Đại" data-href="books/tu-tot-den-vi-dai.html">
+            <td class="col-cover"><div class="row-cover" style="background:#2F4F4F"><img src="assets/images/tu-tot-den-vi-dai.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/tu-tot-den-vi-dai.html" class="row-title">Từ Tốt Đến Vĩ Đại</a></td>
+            <td class="col-author">Jim Collins</td>
+            <td class="col-excerpt">Tại sao một số công ty bứt phá lên tầm vĩ đại trong khi những công ty khác mãi dậm chân ở mức tốt? Sau 5 năm nghiên cứu, Collins tìm ra câu trả lời bất ngờ.</td>
+          </tr>
 
-      <a href="books/tu-tot-den-vi-dai.html" class="book-card" data-tags="Kinh doanh &amp; Chiến lược">
-        <div class="book-cover" style="background: #2F4F4F">
-          <img src="assets/images/tu-tot-den-vi-dai.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Từ Tốt Đến Vĩ Đại</h2>
-          <p class="book-author">Jim Collins</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Kinh doanh &amp; Chiến lược">Kinh doanh &amp; Chiến lược</span>
-          </div>
-          <p class="book-excerpt">Tại sao một số công ty bứt phá lên tầm vĩ đại trong khi những công ty khác mãi dậm chân ở mức tốt? Sau 5 năm nghiên cứu, Collins tìm ra câu trả lời — và nó không phải là điều bạn nghĩ.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
+          <tr class="book-row" data-tags="Tài chính &amp; Đầu tư" data-name="Cha Giàu Cha Nghèo" data-href="books/cha-giau-cha-ngheo.html">
+            <td class="col-cover"><div class="row-cover" style="background:#8B4513"><img src="assets/images/cha-giau-cha-ngheo.jpg" alt="" loading="lazy"></div></td>
+            <td class="col-name"><a href="books/cha-giau-cha-ngheo.html" class="row-title">Cha Giàu Cha Nghèo</a></td>
+            <td class="col-author">Robert T. Kiyosaki</td>
+            <td class="col-excerpt">Tại sao người giàu ngày càng giàu hơn trong khi tầng lớp trung lưu mãi chật vật? Câu trả lời không nằm ở thu nhập — mà nằm ở cách bạn hiểu và dùng tiền.</td>
+          </tr>
 
-      <a href="books/cha-giau-cha-ngheo.html" class="book-card" data-tags="Tài chính &amp; Đầu tư">
-        <div class="book-cover" style="background: #8B4513">
-          <img src="assets/images/cha-giau-cha-ngheo.jpg" alt="" loading="lazy">
-          <span class="book-spine"></span>
-        </div>
-        <div class="book-info">
-          <h2 class="book-title">Cha Giàu Cha Nghèo</h2>
-          <p class="book-author">Robert T. Kiyosaki</p>
-          <div class="card-tags">
-            <span class="card-tag" data-tag="Tài chính &amp; Đầu tư">Tài chính &amp; Đầu tư</span>
-          </div>
-          <p class="book-excerpt">Tại sao người giàu ngày càng giàu hơn trong khi tầng lớp trung lưu mãi chật vật? Câu trả lời không nằm ở thu nhập — mà nằm ở cách bạn hiểu và dùng tiền.</p>
-          <span class="read-more">Đọc review →</span>
-        </div>
-      </a>
-
+        </tbody>
+      </table>
     </div>
   </main>
 

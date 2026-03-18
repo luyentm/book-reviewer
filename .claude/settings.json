@@ -5,7 +5,19 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(grep -n 'hero-tags\\\\|class=\"\"tag\"\"' /home/luyentm/book-reviewer/books/*.html)"
+      "Bash(grep -n 'hero-tags\\\\|class=\"\"tag\"\"' /home/luyentm/book-reviewer/books/*.html)",
+      "WebSearch",
+      "Bash(git -C /home/luyentm/book-reviewer push origin dev)",
+      "Bash(git -C /home/luyentm/book-reviewer add assets/music/bg.mp3 index.html)",
+      "Bash(git -C /home/luyentm/book-reviewer add index.html)",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(sed -i 's|<script src=\"\"../assets/book.js\"\" defer></script>|<script src=\"\"../assets/router.js\"\"></script>|g' \"$f\")",
+      "Bash(echo \"updated: $f\")",
+      "Bash(done)",
+      "Bash(git -C /home/luyentm/book-reviewer add assets/router.js assets/book.js index.html books/)",
+      "Bash(git -C /home/luyentm/book-reviewer add assets/router.js assets/style.css)",
+      "Bash(git -C /home/luyentm/book-reviewer add assets/router.js)"
     ]
   }
 }

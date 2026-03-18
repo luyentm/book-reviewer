@@ -3,74 +3,90 @@
    Font: Cormorant Garamond (heading) + Be Vietnam Pro (body)
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;1,400&display=swap");
 
 /* ---------- Variables ---------- */
 :root {
   /* Nền giữ tone ấm vintage nhưng sáng hơn để tăng contrast */
-  --bg:        #f8f4ed;
-  --bg-card:   #fefcf8;
+  --bg: #f8f4ed;
+  --bg-card: #fefcf8;
 
   /* Text tối hơn đáng kể so với v1 — contrast ratio ~13:1 */
-  --text:      #231608;
+  --text: #231608;
   /* Muted tối hơn — contrast ratio ~6.5:1, pass WCAG AA */
-  --text-muted:#5a3e2b;
+  --text-muted: #5a3e2b;
 
-  --accent:    #b8922a;
+  --accent: #b8922a;
   --accent-dk: #8f6e18;
-  --border:    #ddd0b8;
+  --border: #ddd0b8;
   --border-lt: #ece5d6;
-  --shadow:    rgba(35, 22, 8, 0.10);
+  --shadow: rgba(35, 22, 8, 0.1);
 
-  --font-heading: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Be Vietnam Pro', system-ui, sans-serif;
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Be Vietnam Pro", system-ui, sans-serif;
 }
 
 /* ---------- Reset & Base ---------- */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
 
 body {
   background-color: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 1.0625rem;   /* 17px — dễ đọc hơn 16px cho tiếng Việt */
-  line-height: 1.85;       /* dấu tiếng Việt cần line-height cao */
+  font-size: 1.0625rem; /* 17px — dễ đọc hơn 16px cho tiếng Việt */
+  line-height: 1.85; /* dấu tiếng Việt cần line-height cao */
   min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Subtle paper texture */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 32px,
-      rgba(184, 146, 42, 0.035) 32px,
-      rgba(184, 146, 42, 0.035) 33px
-    );
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 32px,
+    rgba(184, 146, 42, 0.035) 32px,
+    rgba(184, 146, 42, 0.035) 33px
+  );
   pointer-events: none;
   z-index: 0;
 }
 
 /* ---------- Site Header ---------- */
+.site-header,
+.site-footer {
+  flex-shrink: 0;
+}
+
 .site-header {
   position: relative;
   z-index: 1;
   text-align: center;
-  padding: 3rem 1rem 1.75rem;
+  padding: 1rem 1rem 0.75rem;
   border-bottom: 1px solid var(--border);
 }
 
 .site-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
   font-weight: 700;
   color: var(--text);
   letter-spacing: 0.01em;
@@ -85,18 +101,23 @@ body::before {
 }
 
 .site-tagline {
-  margin-top: 0.6rem;
+  margin-top: 0.25rem;
   font-style: italic;
   color: var(--text-muted);
-  font-size: 1rem;
+  font-size: 0.82rem;
   letter-spacing: 0.02em;
 }
 
 .divider {
-  margin: 1.4rem auto 0;
+  margin: 0.6rem auto 0;
   width: 56px;
   height: 1.5px;
-  background: linear-gradient(to right, transparent, var(--accent), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent),
+    transparent
+  );
 }
 
 /* ---------- Back link (book pages) ---------- */
@@ -113,7 +134,9 @@ body::before {
   padding: 2rem 2rem 0;
 }
 
-.back-link:hover { color: var(--accent-dk); }
+.back-link:hover {
+  color: var(--accent-dk);
+}
 
 /* ---------- Main Container ---------- */
 .container {
@@ -122,6 +145,19 @@ body::before {
   max-width: 1120px;
   margin: 0 auto;
   padding: 2.5rem 1.5rem 5rem;
+}
+
+/* Index page: flex column so table fills remaining height */
+.container.container--table {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.75rem;
+  padding-bottom: 0.5rem;
+  max-width: 880px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 /* ---------- Section Heading ---------- */
@@ -154,7 +190,9 @@ body::before {
   color: var(--text);
   overflow: hidden;
   box-shadow: 0 2px 8px var(--shadow);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .book-card:hover {
@@ -179,14 +217,14 @@ body::before {
 }
 
 .book-cover::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     160deg,
-    rgba(255,255,255,0.04) 0%,
+    rgba(255, 255, 255, 0.04) 0%,
     transparent 50%,
-    rgba(0,0,0,0.15) 100%
+    rgba(0, 0, 0, 0.15) 100%
   );
 }
 
@@ -196,8 +234,8 @@ body::before {
   top: 0;
   bottom: 0;
   width: 11px;
-  background: rgba(0,0,0,0.18);
-  box-shadow: inset -2px 0 5px rgba(0,0,0,0.12);
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.12);
 }
 
 /* Book info area */
@@ -292,7 +330,9 @@ body::before {
   width: 130px;
   height: 188px;
   border-radius: 2px 6px 6px 2px;
-  box-shadow: 5px 8px 24px var(--shadow), -2px 0 6px rgba(0,0,0,0.10);
+  box-shadow:
+    5px 8px 24px var(--shadow),
+    -2px 0 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
@@ -304,7 +344,9 @@ body::before {
   display: block;
 }
 
-.hero-cover .book-spine { width: 13px; }
+.hero-cover .book-spine {
+  width: 13px;
+}
 
 .hero-meta {
   flex: 1;
@@ -394,7 +436,7 @@ body::before {
 
 .review-body blockquote p {
   font-style: italic;
-  color: var(--text);       /* Đủ contrast — không dùng muted */
+  color: var(--text); /* Đủ contrast — không dùng muted */
   margin-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.85;
@@ -439,9 +481,9 @@ body::before {
 .tag-filter-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.3rem;
   justify-content: center;
-  margin-bottom: 2.2rem;
+  margin-bottom: 0.75rem;
 }
 
 .tag-filter-btn {
@@ -449,13 +491,16 @@ body::before {
   border: 1px solid var(--border);
   color: var(--text-muted);
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  padding: 0.3rem 0.9rem;
+  padding: 0.15rem 0.6rem;
   border-radius: 99px;
   cursor: pointer;
   letter-spacing: 0.03em;
-  transition: background 0.18s, color 0.18s, border-color 0.18s;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    border-color 0.18s;
 }
 
 .tag-filter-btn:hover {
@@ -488,7 +533,10 @@ body::before {
   border-radius: 99px;
   cursor: pointer;
   letter-spacing: 0.03em;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s;
   user-select: none;
 }
 
@@ -507,13 +555,197 @@ body::before {
 .tag.tag-link {
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s;
 }
 
 .tag.tag-link:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
+}
+
+/* ---------- Book Table ---------- */
+.table-wrapper {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Sticky header */
+.book-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--bg);
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+
+/* Sticky name column */
+.book-table .col-cover {
+  position: sticky;
+  left: 0;
+  width: 104px;
+  min-width: 104px;
+}
+
+.book-table .col-name {
+  position: sticky;
+  left: 104px;
+  min-width: 190px;
+  max-width: 230px;
+}
+
+/* Sticky header cells need higher z-index (corner: both axes) */
+.book-table thead .col-cover,
+.book-table thead .col-name {
+  z-index: 3;
+}
+
+/* Section heading compact */
+.section-heading {
+  margin-bottom: 0.75rem;
+}
+
+/* Background on sticky body cells */
+.book-table tbody td.col-cover,
+.book-table tbody td.col-name {
+  background: var(--bg-card);
+  transition: background 0.15s;
+}
+
+.book-table thead th.col-cover,
+.book-table thead th.col-name {
+  background: var(--bg);
+}
+
+/* Rows */
+.book-table tbody tr {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-lt);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.book-table tbody tr:hover {
+  background: var(--bg);
+}
+
+.book-table tbody tr:hover td.col-cover,
+.book-table tbody tr:hover td.col-name {
+  background: var(--bg);
+}
+
+.book-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.book-table tbody td {
+  padding: 0.55rem 0.9rem;
+  vertical-align: middle;
+  font-size: 0.83rem;
+  color: var(--text);
+}
+
+/* Cover thumbnail */
+.row-cover {
+  width: 68px;
+  height: 94px;
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.row-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Row title link */
+.row-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1.3;
+  display: block;
+}
+
+.row-title:hover {
+  color: var(--accent-dk);
+}
+
+/* Author column */
+.book-table .col-author {
+  width: 155px;
+  min-width: 120px;
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Excerpt column */
+.book-table .col-excerpt {
+  color: var(--text-muted);
+  font-size: 0.77rem;
+  line-height: 1.5;
+  max-width: 420px;
+}
+
+/* Search input inside th */
+#search-name {
+  display: block;
+  margin-top: 0.35rem;
+  width: 160px;
+  padding: 0.28rem 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  outline: none;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+#search-name:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(184, 146, 42, 0.15);
+}
+
+#search-name::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* Hidden rows */
+.book-row[hidden] {
+  display: none;
 }
 
 /* ---------- Responsive ---------- */
@@ -525,7 +757,9 @@ body::before {
     gap: 1.5rem;
   }
 
-  .hero-tags { justify-content: center; }
+  .hero-tags {
+    justify-content: center;
+  }
 
   .book-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -534,5 +768,7 @@ body::before {
 }
 
 @media (max-width: 480px) {
-  .book-grid { grid-template-columns: repeat(2, 1fr); }
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
