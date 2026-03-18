@@ -18,10 +18,6 @@
     else { speechSynthesis.addEventListener('voiceschanged', find, { once: true }); }
   }
 
-  function stopTTS() {
-    if (window.speechSynthesis) speechSynthesis.cancel();
-  }
-
   function initTTS() {
     var article = document.querySelector('.review-body');
     if (!article || !window.speechSynthesis) return;
@@ -79,13 +75,7 @@
     }
   }
 
-  // ── Page init: chạy lại sau mỗi lần swap ────────────────────────────────
-  function initPage() {
-    initTagLinks();
-    if (document.querySelector('.book-grid')) initFilterBar();
-    initTTS();
-  }
-
+  // ── Tag Links ─────────────────────────────────────────────────────────────
   function initTagLinks() {
     var isBook = location.pathname.includes('/books/');
     document.querySelectorAll('a.tag-link').forEach(function (a) {
@@ -94,10 +84,11 @@
     });
   }
 
+  // ── Filter Bar (index only) ───────────────────────────────────────────────
   function initFilterBar() {
     var filterBar = document.getElementById('tag-filters');
     if (!filterBar) return;
-    filterBar.innerHTML = '';  // reset nếu gọi lại lần 2
+    filterBar.innerHTML = '';
 
     var cards = Array.from(document.querySelectorAll('.book-card'));
     var cardTagsMap = new Map(
@@ -151,54 +142,17 @@
       });
     }
 
-    // Apply hash filter sau khi init
     var m = location.hash.match(/^#tag=(.+)$/);
     filterByTag(m ? decodeURIComponent(m[1]) : 'Tất cả');
 
-    // hashchange chỉ relevant khi ở index
     window.onhashchange = function () {
       var hm = location.hash.match(/^#tag=(.+)$/);
       filterByTag(hm ? decodeURIComponent(hm[1]) : 'Tất cả');
     };
   }
 
-  // ── PJAX Router ──────────────────────────────────────────────────────────
-  function isInternal(href) {
-    try {
-      var url = new URL(href, location.href);
-      return url.hostname === location.hostname &&
-             (url.pathname.endsWith('.html') || url.pathname.endsWith('/'));
-    } catch (e) { return false; }
-  }
-
-  function navigate(url, push) {
-    stopTTS();
-    fetch(url).then(function (r) { return r.text(); }).then(function (html) {
-      var doc = new DOMParser().parseFromString(html, 'text/html');
-      var newMain = doc.querySelector('main');
-      var curMain = document.querySelector('main');
-      if (newMain && curMain) curMain.replaceWith(newMain);
-      document.title = doc.title;
-      document.body.className = doc.body.className;
-      if (push) history.pushState(null, '', url);
-      window.scrollTo(0, 0);
-      initPage();
-    });
-  }
-
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest('a');
-    if (!a || !a.href || e.metaKey || e.ctrlKey || e.shiftKey) return;
-    if (!isInternal(a.href)) return;
-    e.preventDefault();
-    navigate(a.href, true);
-  });
-
-  window.addEventListener('popstate', function () {
-    navigate(location.href, false);
-  });
-
-  // ── Bootstrap ────────────────────────────────────────────────────────────
-  initAudio();
-  initPage();
+  // ── Bootstrap ─────────────────────────────────────────────────────────────
+  initTagLinks();
+  if (document.querySelector('.book-grid')) initFilterBar();
+  initTTS();
 })();
