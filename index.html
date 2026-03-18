@@ -347,8 +347,12 @@
         }).catch(function () {});
       }
 
+      // Thử autoplay ngay khi load — trình duyệt cho phép nếu user đã từng vào site
+      tryPlay();
+
+      // Fallback: chờ interaction đầu tiên nếu autoplay bị chặn
       ['click', 'keydown', 'scroll', 'touchstart'].forEach(function (evt) {
-        document.addEventListener(evt, tryPlay, { once: false, passive: true });
+        document.addEventListener(evt, tryPlay, { passive: true });
       });
     })();
   </script>
