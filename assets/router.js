@@ -23,6 +23,24 @@
   }
 
   // ── TTS ──────────────────────────────────────────────────────────────────
+  var viVoice = null;
+
+  function loadViVoice(cb) {
+    if (viVoice) { cb(viVoice); return; }
+    function find() {
+      var voices = speechSynthesis.getVoices();
+      // Ưu tiên: Google tiếng Việt → bất kỳ vi-VN → vi
+      var v = voices.find(function(v){ return v.lang === 'vi-VN' && /google/i.test(v.name); })
+           || voices.find(function(v){ return v.lang === 'vi-VN'; })
+           || voices.find(function(v){ return v.lang.startsWith('vi'); });
+      if (v) { viVoice = v; cb(v); }
+      else cb(null);
+    }
+    var voices = speechSynthesis.getVoices();
+    if (voices.length) { find(); }
+    else { speechSynthesis.addEventListener('voiceschanged', find, { once: true }); }
+  }
+
   function stopTTS() {
     if (window.speechSynthesis) speechSynthesis.cancel();
   }
@@ -53,13 +71,16 @@
 
     playBtn.addEventListener('click', function () {
       if (!speaking) {
-        var utt = new SpeechSynthesisUtterance(text);
-        utt.lang = 'vi-VN';
-        utt.rate = 0.95;
-        utt.onend = resetState;
-        utt.onerror = resetState;
-        speechSynthesis.cancel();
-        speechSynthesis.speak(utt);
+        loadViVoice(function (voice) {
+          var utt = new SpeechSynthesisUtterance(text);
+          utt.lang = 'vi-VN';
+          utt.rate = 0.95;
+          if (voice) utt.voice = voice;
+          utt.onend = resetState;
+          utt.onerror = resetState;
+          speechSynthesis.cancel();
+          speechSynthesis.speak(utt);
+        });
         speaking = true; paused = false;
         bgPause();
         playBtn.textContent = '⏸ Tạm dừng';
