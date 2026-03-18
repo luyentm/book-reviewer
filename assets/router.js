@@ -46,6 +46,11 @@
     var paused = false;
     var text = article.innerText;
 
+    var bgAudio = document.getElementById('bg-audio');
+
+    function bgPause() { if (bgAudio && !bgAudio.paused) bgAudio.pause(); }
+    function bgResume() { if (bgAudio && bgAudio.paused) bgAudio.play().catch(function(){}); }
+
     playBtn.addEventListener('click', function () {
       if (!speaking) {
         var utt = new SpeechSynthesisUtterance(text);
@@ -56,15 +61,18 @@
         speechSynthesis.cancel();
         speechSynthesis.speak(utt);
         speaking = true; paused = false;
+        bgPause();
         playBtn.textContent = '⏸ Tạm dừng';
         stopBtn.hidden = false;
       } else if (!paused) {
         speechSynthesis.pause();
         paused = true;
+        bgResume();
         playBtn.textContent = '▶ Tiếp tục';
       } else {
         speechSynthesis.resume();
         paused = false;
+        bgPause();
         playBtn.textContent = '⏸ Tạm dừng';
       }
     });
@@ -76,6 +84,7 @@
 
     function resetState() {
       speaking = false; paused = false;
+      bgResume();
       playBtn.textContent = '▶ Nghe bài';
       stopBtn.hidden = true;
     }
