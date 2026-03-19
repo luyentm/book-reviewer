@@ -90,23 +90,36 @@ Lowercase, remove Vietnamese diacritics, kebab-case, only `a-z0-9-`:
 
 Đọc 2–3 card đầu trong `index.html` → chọn màu CHƯA xuất hiện trong các card liền kề.
 
-### Step 4 — Create `books/[slug].html`
+### Step 4 — Tìm & Tải ảnh bìa (BẮT BUỘC)
+
+Tìm ảnh bìa sách trên mạng → tải về `assets/images/[slug].jpg`.
+
+**Quy trình:**
+1. Tìm ảnh bìa tiếng Việt trước (ưu tiên bản dịch Việt). Nếu không có, dùng bìa gốc.
+2. Nguồn tìm: Google Images, Tiki, Fahasa, hoặc trang nhà xuất bản.
+3. Tải file ảnh về bằng `curl -L -o assets/images/[slug].jpg "[URL_ẢNH]"`.
+4. Ưu tiên ảnh chất lượng tốt, kích thước ≥ 200px chiều rộng.
+5. Nếu không tìm được ảnh phù hợp → thông báo cho user và tiếp tục các bước còn lại (row trong index vẫn hiển thị màu nền fallback).
+
+> **Lưu ý:** File ảnh PHẢI có tên đúng `[slug].jpg` để khớp với `<img>` trong index row.
+
+### Step 5 — Create `books/[slug].html`
 
 Sinh nội dung review theo **Review Prompt** (Section 6), render vào **Book Page Template** (Section 7).
 
-### Step 5 — Update `index.html`
+### Step 6 — Update `index.html`
 
 Tìm `<!-- BOOK CARDS -->` → chèn card mới **ngay sau** comment (newest first).
 Dùng **Card Template** (Section 8). `&` → `&amp;` trong `data-tags` và `data-tag`.
 
-### Step 6 — Update `TAGS.md`
+### Step 7 — Update `TAGS.md`
 
 Thêm dòng vào bảng **Mapping các sách đã review**:
 ```
 | Tên Sách | Tag1 · Tag2 |
 ```
 
-### Step 7 — Verify Checklist
+### Step 8 — Verify Checklist
 
 - [ ] `books/[slug].html` đã tạo
 - [ ] Card ở vị trí đầu tiên sau `<!-- BOOK CARDS -->`
@@ -114,6 +127,7 @@ Thêm dòng vào bảng **Mapping các sách đã review**:
 - [ ] Tag chủ đề dùng `<a class="tag tag-link">` KHÔNG có `href` — book.js tự set
 - [ ] Tag meta ("Phi hư cấu", năm) dùng `<span class="tag">` — không phải `<a>`
 - [ ] Màu bìa trong hero page khớp với màu trong card index
+- [ ] Ảnh bìa `assets/images/[slug].jpg` đã tồn tại
 
 ---
 
