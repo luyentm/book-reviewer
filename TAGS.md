@@ -43,6 +43,7 @@ khi sách thực sự không thuộc bất kỳ nhóm nào bên dưới — và 
 | Đắc Nhân Tâm | Tâm lý học & Hành vi |
 | Nguyên Lý 80/20 | Tư duy & Ra quyết định · Năng suất & Thói quen |
 | Nghĩ Giàu & Làm Giàu | Tài chính & Đầu tư · Truyền cảm hứng |
+| Nhân Sự Cốt Cán | Lãnh đạo & Quản trị · Truyền cảm hứng |
 
 ---
 
