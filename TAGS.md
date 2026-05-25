@@ -45,6 +45,7 @@ khi sách thực sự không thuộc bất kỳ nhóm nào bên dưới — và 
 | Nghĩ Giàu & Làm Giàu | Tài chính & Đầu tư · Truyền cảm hứng |
 | Nhân Sự Cốt Cán | Lãnh đạo & Quản trị · Truyền cảm hứng |
 | 27 Thách Thức Của Nhà Quản Lý | Lãnh đạo & Quản trị |
+| Không Gia Đình | Truyền cảm hứng · Hư cấu & Tiểu thuyết |
 
 ---
 
